@@ -30,7 +30,9 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 				className="flex flex-col gap-6 w-full md:gap-8 text-left text-lg md:text-xl md-custom"
 				components={{
 					ul: ({ children }) => (
-						<ul className="list-disc list-inside">{children}</ul>
+						<ul className="flex flex-col gap-1 list-disc list-inside">
+							{children}
+						</ul>
 					),
 					img: (props) => {
 						const [loaded, setLoaded] = useState(false)
@@ -57,7 +59,7 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 				{contentMd}
 			</ReactMarkdown>
 			<div className="w-full h-[1px] bg-harry-potter-gold" />
-			<Link href="/" className="md:text-3xl">
+			<Link href="/" className="flex md:text-3xl">
 				← Volver
 			</Link>
 		</Container>
