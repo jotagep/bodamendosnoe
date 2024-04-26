@@ -72,8 +72,11 @@ export const getStaticProps: GetStaticProps<PruebasProps> = async ({
 	const pruebaId = params?.id as string
 
 	const pruebas = await getFilteredPruebas()
-	const pruebaData =
-		pruebas.find((prueba) => prueba.id === pruebaId) || pruebas[0]
+	const pruebaData = pruebas.find((prueba) => prueba.id === pruebaId) || {
+		title: "",
+		id: "",
+		publicada: false,
+	}
 
 	const contentMd = await getPruebaMd(pruebaId)
 
