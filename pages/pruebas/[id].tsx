@@ -36,14 +36,14 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 						const [loaded, setLoaded] = useState(false)
 						return (
 							<div
-								className={`border-harry-potter-gold border rounded-lg ${
+								className={`border-harry-potter-gold border-opacity-50 border rounded-lg ${
 									loaded ? "" : "w-full"
 								}`}
 							>
 								<div className="flex justify-center items-center rounded-lg p-2 md:p-4">
 									<img
 										{...props}
-										className={loaded ? "" : "hidden"}
+										className={loaded ? "rounded-lg" : "hidden"}
 										onLoad={() => setLoaded(true)}
 									/>
 									{!loaded && <Spinner />}

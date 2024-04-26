@@ -28,7 +28,9 @@ export default function Home({ pruebas }: HomeProps) {
 				instrucciones.
 			</p>
 			<Counter />
-			<h3 className="font-harry text-5xl">Para conseguir tu billete:</h3>
+			<h3 className="font-harry text-5xl drop-shadow">
+				Para conseguir tu billete:
+			</h3>
 			<PruebasList pruebas={pruebas} />
 		</Container>
 	)

@@ -8,7 +8,12 @@ type Props = {
 
 function PruebasList({ pruebas }: Props) {
 	return (
-		<ol className="md:-mt-4 list-decimal flex flex-col items-start py-4 md:py-8 px-4 pl-8 md:pl-12 border-harry-potter-gold border-2 rounded w-full">
+		<ol className="md:-mt-4 list-decimal flex flex-col items-start py-4 md:py-8 px-4 pl-8 md:pl-12 border-harry-potter-gold border-opacity-50 border-2 rounded w-full">
+			{pruebas.length === 0 && (
+				<span className="text-2xl mx-auto animate-pulse my-4">
+					En breve estarán listas tus pruebas ⌛️
+				</span>
+			)}
 			{pruebas.map((prueba, index) => (
 				<li
 					key={index}
