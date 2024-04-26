@@ -1,7 +1,7 @@
 import type { GetStaticProps } from "next"
 
 import { REVALIDATE_TIME } from "@/config/constants"
-import { getPruebas, Prueba } from "@/lib/notion"
+import { getFilteredPruebas, type Prueba } from "@/lib/notion"
 
 import PruebasList from "@/components/PruebasList"
 import Counter from "@/components/Counter"
@@ -35,7 +35,7 @@ export default function Home({ pruebas }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-	const pruebas = await getPruebas()
+	const pruebas = await getFilteredPruebas()
 
 	return {
 		props: {

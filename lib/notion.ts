@@ -20,10 +20,16 @@ const notionClient = new Client({
 
 const n2m = new NotionToMarkdown({ notionClient })
 
-export async function getPruebas(): Promise<Prueba[]> {
+export async function getPruebas() {
 	const { results } = await notionClient.databases.query({
 		database_id: process.env.NOTION_DATABASE_ID as string,
 	})
+
+	return results
+}
+
+export async function getFilteredPruebas(): Promise<Prueba[]> {
+	const results = await getPruebas()
 
 	return results
 		.reverse()

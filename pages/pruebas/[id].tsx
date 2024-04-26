@@ -5,9 +5,15 @@ import ReactMarkdown from "react-markdown"
 import remarkMdx from "remark-mdx"
 
 import Container from "@/components/Container"
+import Spinner from "@/components/Spinner"
+
 import { REVALIDATE_TIME } from "@/config/constants"
-import { Prueba, getPruebaMd, getPruebas } from "@/lib/notion"
-import Spinner from "@/components/Spinnert"
+import {
+	type Prueba,
+	getFilteredPruebas,
+	getPruebaMd,
+	getPruebas,
+} from "@/lib/notion"
 
 type PruebasProps = {
 	pruebaData: Prueba
@@ -65,7 +71,7 @@ export const getStaticProps: GetStaticProps<PruebasProps> = async ({
 }) => {
 	const pruebaId = params?.id as string
 
-	const pruebas = await getPruebas()
+	const pruebas = await getFilteredPruebas()
 	const pruebaData =
 		pruebas.find((prueba) => prueba.id === pruebaId) || pruebas[0]
 
