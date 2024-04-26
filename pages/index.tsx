@@ -1,33 +1,46 @@
-// @ts-nocheck
-import { Cinzel } from "next/font/google"
+import type { GetStaticProps } from "next"
 
-import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
+import { REVALIDATE_TIME } from "@/config/constants"
+import { getPruebas, Prueba } from "@/lib/notion"
+
+import PruebasList from "@/components/PruebasList"
+import Counter from "@/components/Counter"
+
 import "@leenguyen/react-flip-clock-countdown/dist/index.css"
+import Container from "@/components/Container"
 
-const cinzel = Cinzel({
-	weight: ["400", "700"],
-	subsets: ["latin"],
-})
+type HomeProps = {
+	pruebas: Prueba[]
+}
 
-const finishDate = new Date("2024-05-10T15:00:00Z")
-
-export default function Home() {
+export default function Home({ pruebas }: HomeProps) {
 	return (
-		<main
-			className={`flex min-h-screen flex-col items-center p-24 ${cinzel.className}`}
-		>
-			<h1 className="font-harry text-9xl text-harry-potter-gold drop-shadow">
-				Sofía despedida
+		<Container>
+			<h1 className="font-harry text-center text-8xl md:text-9xl drop-shadow">
+				Sofia despedida
 			</h1>
-			<div className="mt-14 p-3 bg-gray-200 rounded-lg shadow shadow-gray-700">
-				<FlipClockCountdown
-					to={finishDate}
-					showLabels={false}
-					showSeparators={false}
-				>
-					Finished
-				</FlipClockCountdown>
-			</div>
-		</main>
+			<p className="text-center md:text-xl">
+				Tu vida muggle llega a su fin...Te esperamos el viernes 10 de Mayo en el
+				andén 9 y 3/4 de la estación de Sants. Conseguir tu billete a Hogwarts
+				no será tan fácil. Toda comunicación se realizará a través de esta web o
+				vía lechuza. ¿stás preparada? Si es así, sube un selfie a stories de
+				instagram con la palabra "Ready" y así recibir las siguientes
+				instrucciones.
+			</p>
+			<Counter />
+			<h3 className="font-harry text-5xl">Para conseguir tu billete:</h3>
+			<PruebasList pruebas={pruebas} />
+		</Container>
 	)
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+	const pruebas = await getPruebas()
+
+	return {
+		props: {
+			pruebas,
+		},
+		revalidate: REVALIDATE_TIME,
+	}
 }

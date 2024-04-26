@@ -8,6 +8,9 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			spacing: {
+				"18": "4.5rem",
+			},
 			fontFamily: {
 				harry: ["HarryFont", "sans-serif"], // 'sans-serif' is a fallback font
 			},
