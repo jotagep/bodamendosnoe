@@ -14,14 +14,14 @@ export default function App({ Component, pageProps }: AppProps) {
 		<main
 			className={`min-h-screen relative text-harry-potter-gold pb-10 bg-black ${alegreya.className}`}
 		>
-			<div className="absolute inset-0">
+			<div className="absolute top-0 left-0 w-full h-screen">
 				<Image
-					className="object-right object-cover"
+					className="bg-img"
 					src={"/images/monzon.jpg"}
 					alt={"background"}
 					fill
 				/>
-				<div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/100"></div>
+				<div className="absolute inset-0 bg-gradient-to-b from-black/75 to-black/100"></div>
 			</div>
 			<Component {...pageProps} />
 			<div className="absolute bottom-6 left-1/2 -translate-x-1/2">

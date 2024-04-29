@@ -4,8 +4,10 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"dev:remote": "next dev -p 4000 -H 192.168.1.33",
 		"build": "next build",
 		"start": "next start",
+		"start:remote": "next start -p 4000 -H 192.168.1.33",
 		"lint": "next lint"
 	},
 	"dependencies": {

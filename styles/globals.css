@@ -14,9 +14,10 @@
   scrollbar-color: #6e5a1a #000; /* barra azul sobre fondo blanco */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components { 
+  .bg-img {
+    object-position: 75% 50%;
+    @apply object-cover md:object-center;
   }
 
   .md-custom {
@@ -36,5 +37,11 @@
       justify-content: center;
       width: 100%;
     }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
