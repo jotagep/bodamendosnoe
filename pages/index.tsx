@@ -23,9 +23,9 @@ export default function Home({ pruebas }: HomeProps) {
 				Tu vida muggle llega a su fin...Te esperamos el viernes 10 de Mayo a las
 				17h en el andén 9 y 3/4 de la estación de Sants. Conseguir tu billete a
 				Hogwarts no será tan fácil. Toda comunicación se realizará a través de
-				esta web o vía lechuza. ¿Estás preparada? Si es así, sube un selfie a
-				stories de instagram con la palabra "Ready" y así recibir las siguientes
-				instrucciones.
+				esta web o vía lechuza. ¿Estás preparada? ACEPTASTE EL RETO!!! Cada vez
+				que completes una prueba, revisa la web para encontrar las instrucciones
+				de tu siguiente desafío.
 			</p>
 			<Counter />
 			<h3 className="font-harry text-5xl drop-shadow">
