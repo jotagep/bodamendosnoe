@@ -31,16 +31,14 @@ export async function getPruebas() {
 export async function getFilteredPruebas(): Promise<Prueba[]> {
 	const results = await getPruebas()
 
-	return results
-		.reverse()
-		.map((page: any) => {
-			return {
-				title: page.properties.titulo.title[0].plain_text,
-				id: page.id,
-				publicada: page.properties.publicada.checkbox,
-			}
-		})
-		.filter((prueba: Prueba) => prueba.publicada)
+	return results.reverse().map((page: any) => {
+		return {
+			title: page.properties.titulo.title[0].plain_text,
+			id: page.id,
+			publicada: page.properties.publicada.checkbox,
+		}
+	})
+	//.filter((prueba: Prueba) => prueba.publicada)
 }
 
 export async function getPruebaMd(id: string) {
