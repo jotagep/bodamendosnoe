@@ -1,9 +1,17 @@
+"use client"
+
 import React, { useEffect, useState } from "react"
+import CountUp from "react-countup"
 
-import { FINISH_DATE } from "@/config/constants"
-import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown"
-
-function Counter() {
+function Counter({
+	total,
+	text,
+	tiny,
+}: {
+	total: number
+	text?: string
+	tiny?: boolean
+}) {
 	const [isClient, setIsClient] = useState(false)
 
 	useEffect(() => {
@@ -13,12 +21,18 @@ function Counter() {
 	if (!isClient) return null
 
 	return (
-		<div className="p-3 bg-gray-300 bg-opacity-90 rounded-lg shadow shadow-gray-700 scale-75 md:scale-100">
-			<FlipClockCountdown
-				to={FINISH_DATE}
-				showLabels={false}
-				showSeparators={false}
-				suppressHydrationWarning
+		<div
+			className={`${
+				tiny ? "px-4 py-2" : "px-6 py-3"
+			} bg-harry-potter-gold text-white rounded-lg text-center shadow`}
+		>
+			<h3 className={tiny ? "text-2xl" : "text-3xl"}>
+				{text || "Bote acumulado"}
+			</h3>
+			<CountUp
+				className={tiny ? "text-xl" : "text-2xl"}
+				suffix="€"
+				end={total || 1000}
 			/>
 		</div>
 	)

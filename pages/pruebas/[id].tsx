@@ -5,6 +5,8 @@ import ReactMarkdown from "react-markdown"
 import remarkMdx from "remark-mdx"
 
 import Container from "@/components/Container"
+import Counter from "@/components/Counter"
+import Embed from "@/components/Embed"
 import Spinner from "@/components/Spinner"
 
 import { REVALIDATE_TIME } from "@/config/constants"
@@ -26,6 +28,7 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 			<div className="text-4xl md:text-6xl mb-4 md:mb-0">
 				{pruebaData.title}
 			</div>
+			<Counter total={pruebaData.dinero} text="Recompensa de la prueba" tiny />
 			<ReactMarkdown
 				className="flex flex-col gap-6 w-full md:gap-8 text-left text-lg md:text-xl md-custom"
 				components={{
@@ -53,6 +56,12 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 							</div>
 						)
 					},
+					a: (props) => {
+						if (props.children === "embed" || props.children === "video") {
+							return <Embed url={props.href} />
+						}
+						return <a {...props} target="_blank" rel="noopener noreferrer" />
+					},
 				}}
 				remarkPlugins={[remarkMdx]}
 			>
@@ -77,10 +86,12 @@ export const getStaticProps: GetStaticProps<PruebasProps> = async ({
 	const pruebaData = pruebas.find((prueba) => prueba.id === pruebaId) || {
 		title: "",
 		id: "",
-		publicada: false,
+		completada: false,
+		dinero: 0,
 	}
 
 	const contentMd = await getPruebaMd(pruebaId)
+	console.log(contentMd)
 
 	return {
 		props: {

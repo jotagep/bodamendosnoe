@@ -13,6 +13,7 @@ const config: Config = {
 			},
 			fontFamily: {
 				harry: ["HarryFont", "sans-serif"], // 'sans-serif' is a fallback font
+				paris: ["Paris 2024", "sans-serif"],
 			},
 			colors: {
 				"harry-potter-gold": "#d4af37", // Este es un tono dorado típico

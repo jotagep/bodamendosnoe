@@ -1,4 +1,5 @@
 import type { GetStaticProps } from "next"
+import Image from "next/image"
 
 import { REVALIDATE_TIME } from "@/config/constants"
 import { getFilteredPruebas, type Prueba } from "@/lib/notion"
@@ -11,26 +12,30 @@ import Container from "@/components/Container"
 
 type HomeProps = {
 	pruebas: Prueba[]
+	total: number
 }
 
-export default function Home({ pruebas }: HomeProps) {
+export default function Home({ pruebas, total }: HomeProps) {
 	return (
 		<Container>
-			<h1 className="font-harry text-center text-8xl md:text-9xl drop-shadow">
-				Sofia despedida
+			<h1 className="font-paris text-center text-4xl md:text-7xl drop-shadow">
+				Olimpiadas Mendo & Noe 2024
 			</h1>
-			<p className="text-center md:text-xl">
-				Tu vida muggle llega a su fin...Te esperamos el viernes 10 de Mayo a las
-				17h en el andén 9 y 3/4 de la estación de Sants. Conseguir tu billete a
-				Hogwarts no será tan fácil. Toda comunicación se realizará a través de
-				esta web o vía lechuza. ¿Estás preparada? ACEPTASTE EL RETO!!! Cada vez
-				que completes una prueba, revisa la web para encontrar las instrucciones
-				de tu siguiente desafío.
+			<div className="-my-12 md:-my-16">
+				<Image src={"/images/aros.png"} alt={"aros"} width={200} height={200} />
+			</div>
+			<p className="text-center md:text-xl md:max-w-5xl">
+				¡Bienvenidos a los Juegos Olímpicos de 2024! Nuestros competidores
+				estrella, se enfrentarán a una serie de desafíos únicos para alcanzar la
+				gloria olímpica. A través de una serie de pruebas ingeniosas y
+				emocionantes, Mendo y Noe pondrán a prueba su destreza, inteligencia y
+				espíritu deportivo. Cada desafío superado los acercará más a su
+				recompensa final. ¿Listos para verlos competir y superar obstáculos?
+				¡Preparen sus antorchas y únanse a nosotros en esta emocionante travesía
+				olímpica llena de diversión y sorpresas!
 			</p>
-			<Counter />
-			<h3 className="font-harry text-5xl drop-shadow">
-				Para conseguir tu billete:
-			</h3>
+			<Counter total={total} />
+
 			<PruebasList pruebas={pruebas} />
 		</Container>
 	)
@@ -39,9 +44,17 @@ export default function Home({ pruebas }: HomeProps) {
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const pruebas = await getFilteredPruebas()
 
+	const total = pruebas.reduce((acc, curr) => {
+		if (curr.completada) {
+			return acc + curr.dinero
+		}
+		return acc
+	}, 0)
+
 	return {
 		props: {
 			pruebas,
+			total,
 		},
 		revalidate: REVALIDATE_TIME,
 	}

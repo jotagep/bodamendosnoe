@@ -12,7 +12,7 @@ const alegreya = Alegreya({
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<main
-			className={`min-h-screen relative text-harry-potter-gold pb-10 bg-black ${alegreya.className}`}
+			className={`min-h-screen relative pb-10 bg-white ${alegreya.className}`}
 		>
 			<div className="absolute top-0 left-0 w-full h-screen">
 				<Image
@@ -21,11 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
 					alt={"background"}
 					fill
 				/>
-				<div className="absolute inset-0 bg-gradient-to-b from-black/75 to-black/100"></div>
+				<div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/100"></div>
 			</div>
 			<Component {...pageProps} />
 			<div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-				Made with ❤️
+				Made with ❤️ by jotagep
 			</div>
 		</main>
 	)
