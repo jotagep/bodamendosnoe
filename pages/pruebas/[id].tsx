@@ -30,7 +30,7 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 			</div>
 			<Counter total={pruebaData.dinero} text="Recompensa de la prueba" tiny />
 			<ReactMarkdown
-				className="flex flex-col gap-6 w-full md:gap-8 text-left text-lg md:text-xl md-custom"
+				className="flex flex-col gap-6 w-full md:gap-8 text-left text-lg md:text-xl md-custom break-words"
 				components={{
 					ul: ({ children }) => (
 						<ul className="flex flex-col gap-2 list-disc list-inside">
