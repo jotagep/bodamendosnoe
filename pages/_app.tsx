@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					alt={"background"}
 					fill
 				/>
-				<div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/100"></div>
+				<div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/100 -mb-1"></div>
 			</div>
 			<Component {...pageProps} />
 			<div className="absolute bottom-6 left-1/2 -translate-x-1/2">

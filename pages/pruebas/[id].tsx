@@ -91,7 +91,6 @@ export const getStaticProps: GetStaticProps<PruebasProps> = async ({
 	}
 
 	const contentMd = await getPruebaMd(pruebaId)
-	console.log(contentMd)
 
 	return {
 		props: {
