@@ -60,7 +60,14 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 						if (props.children === "embed" || props.children === "video") {
 							return <Embed url={props.href} />
 						}
-						return <a {...props} target="_blank" rel="noopener noreferrer" />
+						return (
+							<a
+								className="text-sky-800 underline hover:text-blue-900"
+								{...props}
+								target="_blank"
+								rel="noopener noreferrer"
+							/>
+						)
 					},
 				}}
 				remarkPlugins={[remarkMdx]}
