@@ -108,5 +108,5 @@ export const getStaticPaths: GetStaticPaths = async function () {
 		params: { id: prueba.id },
 	}))
 
-	return { paths, fallback: false }
+	return { paths, fallback: "blocking" }
 }
