@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react"
 import CountUp from "react-countup"
 
 function Counter({
-	total,
+	total = 0,
 	text,
 	tiny,
 }: {
-	total: number
+	total?: number
 	text?: string
 	tiny?: boolean
 }) {
@@ -32,7 +32,7 @@ function Counter({
 			<CountUp
 				className={tiny ? "text-xl" : "text-2xl"}
 				suffix="€"
-				end={total || 1000}
+				end={total}
 			/>
 		</div>
 	)

@@ -19,7 +19,7 @@ export default function Home({ pruebas, total }: HomeProps) {
 	return (
 		<Container>
 			<h1 className="font-paris text-center text-4xl md:text-7xl drop-shadow">
-				Olimpiadas Mendo & Noe 2024
+				Olimpiadas Mendo & Noe <br></br>2024
 			</h1>
 			<div className="-my-12 md:-my-16">
 				<Image src={"/images/aros.png"} alt={"aros"} width={200} height={200} />
@@ -29,10 +29,11 @@ export default function Home({ pruebas, total }: HomeProps) {
 				estrella, se enfrentarán a una serie de desafíos únicos para alcanzar la
 				gloria olímpica. A través de una serie de pruebas ingeniosas y
 				emocionantes, Mendo y Noe pondrán a prueba su destreza, inteligencia y
-				espíritu deportivo. Cada desafío superado los acercará más a su
-				recompensa final. ¿Listos para verlos competir y superar obstáculos?
-				¡Preparen sus antorchas y únanse a nosotros en esta emocionante travesía
-				olímpica llena de diversión y sorpresas!
+				espíritu deportivo.
+				<br /> Cada desafío superado los acercará más a su recompensa final.
+				¿Listos para verlos competir y superar obstáculos? ¡Preparen sus
+				antorchas y únanse a nosotros en esta emocionante travesía olímpica
+				llena de diversión y sorpresas!
 			</p>
 			<Counter total={total} />
 
