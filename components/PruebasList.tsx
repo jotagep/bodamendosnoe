@@ -30,12 +30,12 @@ function PruebasList({ pruebas }: Props) {
 						height={300}
 					/>
 					{prueba.completada && (
-						<span className="absolute inset-0 top-4 left-4 opacity-50">
+						<span className="absolute inset-0 top-2 left-2 md:top-4 md:left-4 opacity-50">
 							<Image
 								src={"/images/check.png"}
 								alt={"check"}
-								width={75}
-								height={75}
+								width={60}
+								height={60}
 							/>
 						</span>
 					)}
