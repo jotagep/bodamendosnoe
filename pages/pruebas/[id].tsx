@@ -23,6 +23,7 @@ type PruebasProps = {
 }
 
 function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
+	console.log(contentMd)
 	return (
 		<Container>
 			<div className="text-4xl md:text-6xl mb-4 md:mb-0">
@@ -32,6 +33,12 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 			<ReactMarkdown
 				className="flex flex-col gap-6 w-full md:gap-8 text-left text-lg md:text-xl md-custom break-words"
 				components={{
+					ol: ({ children }) => (
+						<ol className="flex flex-col gap-8 list-decimal list-inside">
+							{children}
+						</ol>
+					),
+					li: ({ children }) => <li className="space-y-4">{children}</li>,
 					ul: ({ children }) => (
 						<ul className="flex flex-col gap-2 list-disc list-inside">
 							{children}
