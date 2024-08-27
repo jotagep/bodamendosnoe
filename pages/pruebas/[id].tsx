@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import Link from "next/link"
 import { useState } from "react"
 import ReactMarkdown from "react-markdown"
@@ -9,13 +9,7 @@ import Counter from "@/components/Counter"
 import Embed from "@/components/Embed"
 import Spinner from "@/components/Spinner"
 
-import { REVALIDATE_TIME } from "@/config/constants"
-import {
-	type Prueba,
-	getFilteredPruebas,
-	getPruebaMd,
-	getPruebas,
-} from "@/lib/notion"
+import { type Prueba, getFilteredPruebas, getPruebaMd } from "@/lib/notion"
 
 type PruebasProps = {
 	pruebaData: Prueba
@@ -23,7 +17,6 @@ type PruebasProps = {
 }
 
 function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
-	console.log(contentMd)
 	return (
 		<Container>
 			<div className="text-4xl md:text-6xl mb-4 md:mb-0">
@@ -91,7 +84,7 @@ function PruebaPage({ pruebaData, contentMd }: PruebasProps) {
 
 export default PruebaPage
 
-export const getStaticProps: GetStaticProps<PruebasProps> = async ({
+export const getServerSideProps: GetServerSideProps<PruebasProps> = async ({
 	params,
 }) => {
 	const pruebaId = params?.id as string
@@ -111,16 +104,5 @@ export const getStaticProps: GetStaticProps<PruebasProps> = async ({
 			pruebaData,
 			contentMd,
 		},
-		revalidate: REVALIDATE_TIME,
 	}
-}
-
-export const getStaticPaths: GetStaticPaths = async function () {
-	const pruebas = await getPruebas()
-
-	const paths = pruebas.map((prueba) => ({
-		params: { id: prueba.id },
-	}))
-
-	return { paths, fallback: "blocking" }
 }
